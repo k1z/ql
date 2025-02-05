@@ -356,6 +356,5 @@ if __name__ == "__main__":
     tokens = token.split('#')
 
     for token in tokens:
-        print(token)
         sf = SFExpress(token)
         sf.main()

@@ -393,11 +393,11 @@ class RUN:
     def honey_indexData(self, END=False):
         if not END: print('开始执行采蜜任务')
         # 邀请
-        random_invite = random.choice([invite for invite in inviteId if invite != self.user_id])
+        # random_invite = random.choice([invite for invite in inviteId if invite != self.user_id])
         self.headers['channel'] = 'wxwdsj'
-        json_data = {"inviteUserId": random_invite}
+        # json_data = {"inviteUserId": random_invite}
         url = 'https://mcs-mimp-web.sf-express.com/mcs-mimp/commonPost/~memberNonactivity~receiveExchangeIndexService~indexData'
-        response = self.do_request(url, data=json_data)
+        response = self.do_request(url)
         if response.get('success') == True:
             usableHoney = response.get('obj').get('usableHoney')
             if END:
@@ -1700,7 +1700,7 @@ if __name__ == '__main__':
     APP_NAME = '顺丰速运'
     ENV_NAME = 'SFSY'
     CK_NAME = 'url'
-    token = ''
+    token = 'https://mcs-mimp-web.sf-express.com/mcs-mimp/share/weChat/shareGiftReceiveRedirect?source=CX&scene=6&unionId=EkJPKAZOcnjBb1tuYWo4DGRI8eOlS0ptCF8XY9AhEO0%3D&openId=7FwNkjtXlpcksBqBigsH6DM7XYu%2FBFAckoow9rME%2F%2Fs%3D&memId=9e%2FhPjmzn1whMNtXUXe9pJkxj3i5cqb584fF8M9bDgIDdjSr%2F6X0WoiZtgGzs7sG&memNo=6tB15T6k0ZvyroDMcHJm6dOd9hSeav7xjCJZ2HjsUesDdjSr%2F6X0WoiZtgGzs7sG&mobile=xSK3QIp7iMZgoL3tj6K0FA%3D%3D&bizCode=619%40%40R0VaTmhYNnZHWHNKZTJLejlPV3hpeDhveGVTMXBzbGhXU0JtR00ySVowQT0%3D'
     ENV = os.getenv(ENV_NAME)
     token = ENV if ENV else token
     if not token:
