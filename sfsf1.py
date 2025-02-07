@@ -328,7 +328,6 @@ class RUN:
         url = 'https://mcs-mimp-web.sf-express.com/mcs-mimp/commonPost/~memberNonactivity~receiveExchangeIndexService~taskDetail'
 
         response = self.do_request(url, data=json_data)
-        # print(response)
         if response.get('success') == True:
             for item in response["obj"]["list"]:
                 self.taskType = item["taskType"]
@@ -341,12 +340,10 @@ class RUN:
                 if "taskCode" in item:
                     self.taskCode = item["taskCode"]
                     if self.taskType == 'DAILY_VIP_TASK_TYPE':
-                        pass
-                        # self.get_coupom_list()
-                    else:
-                        self.do_honeyTask()
+                        self.get_coupom_list()
                 if self.taskType == 'BEES_GAME_TASK_TYPE':
                     self.honey_damaoxian()
+                self.do_honeyTask()
                 time.sleep(2)
 
     def honey_damaoxian(self):
@@ -366,6 +363,7 @@ class RUN:
             if stu:
                 gameNum = response.get('obj')['gameNum']
                 print(f'>大冒险成功！剩余次数[{gameNum}]')
+                self.do_honeyTask()
                 time.sleep(2)
                 gameNum -= 1
             elif response.get("errorMessage") == '容量不足':
