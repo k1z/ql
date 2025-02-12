@@ -283,8 +283,10 @@ class RUN:
         response = self.do_request(url, data=json_data)
         if response.get('success') == True:
             print(f'领券成功')
+            return True
         else:
             print(f'领券失败！原因：{response.get("errorMessage")}')
+            return False
 
     def get_coupom_list(self):
         print('获取生活权益券列表')
@@ -305,10 +307,15 @@ class RUN:
                 goodsList.extend(obj["goodsList"])
             # print(goodsList)
             filtered_data = [item for item in goodsList if item['currentStore'] > 0 and item['exchangeTimesLimit'] > 1]
-            goods = random.choice(filtered_data)
-            self.goodsNo = goods['goodsNo']
-            print(f'当前选择券号：{self.goodsNo}')
-            self.get_coupom()
+            # goods = random.choice(filtered_data)
+            for goods in filtered_data:
+                self.goodsNo = goods['goodsNo']
+                print(f'当前选择券号：{self.goodsNo}')
+                res = self.get_coupom()
+                if res:
+                    break
+            # print(goodsList)
+            # print(filtered_data)
 
             # for goods in goodsList:
             #     exchangeTimesLimit = goods['exchangeTimesLimit']
