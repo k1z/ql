@@ -306,7 +306,7 @@ class RUN:
             for obj in response["obj"]:
                 goodsList.extend(obj["goodsList"])
             # print(goodsList)
-            filtered_data = [item for item in goodsList if item['currentStore'] > 0 and item['exchangeTimesLimit'] > 1]
+            filtered_data = [item for item in goodsList if item['currentStore'] > 0 and item['exchangeTimesLimit'] >= 1]
             # goods = random.choice(filtered_data)
             for goods in filtered_data:
                 self.goodsNo = goods['goodsNo']
