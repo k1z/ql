@@ -268,7 +268,6 @@ class RUN:
             print(f'收取任务[{self.taskType}]失败！原因：{response.get("errorMessage")}')
 
     def get_coupom(self):
-        print('执行领取生活权益领券任务')
         # 领取生活权益领券
         # https://mcs-mimp-web.sf-express.com/mcs-mimp/commonPost/~memberGoods~pointMallService~createOrder
 
@@ -285,7 +284,6 @@ class RUN:
             print(f'领券成功')
             return True
         else:
-            print(f'领券失败！原因：{response.get("errorMessage")}')
             return False
 
     def get_coupom_list(self):
@@ -305,25 +303,13 @@ class RUN:
             goodsList = []
             for obj in response["obj"]:
                 goodsList.extend(obj["goodsList"])
-            # print(goodsList)
             filtered_data = [item for item in goodsList if item['currentStore'] > 0 and item['exchangeTimesLimit'] >= 1]
-            # goods = random.choice(filtered_data)
             for goods in filtered_data:
                 self.goodsNo = goods['goodsNo']
                 print(f'当前选择券号：{self.goodsNo}')
                 res = self.get_coupom()
                 if res:
                     break
-            # print(goodsList)
-            # print(filtered_data)
-
-            # for goods in goodsList:
-            #     exchangeTimesLimit = goods['exchangeTimesLimit']
-            #     if exchangeTimesLimit >= 7 and goods['currentStore'] > 100:
-            #         self.goodsNo = goods['goodsNo']
-            #         print(f'当前选择券号：{self.goodsNo}')
-            #         self.get_coupom()
-            #         break
         else:
             print(f'>领券失败！原因：{response.get("errorMessage")}')
 
