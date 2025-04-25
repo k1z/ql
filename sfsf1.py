@@ -303,15 +303,14 @@ class RUN:
             goodsList = []
             for obj in response["obj"]:
                 goodsList.extend(obj["goodsList"])
-            filtered_data = [item for item in goodsList if item['currentStore'] > 0 and item['exchangeTimesLimit'] >= 1]
+            filtered_data = [item for item in goodsList if item['currentStore'] > 0 and item.get('exchangeTimesLimit',0) >= 1]
             for goods in filtered_data:
                 self.goodsNo = goods['goodsNo']
-                print(f'当前选择券号：{self.goodsNo}')
                 res = self.get_coupom()
                 if res:
                     break
         else:
-            print(f'>领券失败！原因：{response.get("errorMessage")}')
+            print(f'获取生活权益列表失败')
 
     def get_honeyTaskListStart(self):
         print('开始获取采蜜任务列表')
