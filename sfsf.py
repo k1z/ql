@@ -185,6 +185,7 @@ class SFExpress:
                 task_strategyId = task_msg["strategyId"]
                 task_code = task_msg["taskCode"]
                 task_id = task_msg["taskId"]
+                print(f"任务[{task_title}]状态[{task_status}]")
                 if task_title in self.allow_task:
                     if task_status == 2:
                         print( f"领取任务[{task_title}]成功" )
@@ -345,7 +346,7 @@ class SFExpress:
 if __name__ == "__main__":
     ENV_NAME = 'SFSY'
     CK_NAME = 'url'
-    token = ''
+    token = 'https://mcs-mimp-web.sf-express.com/mcs-mimp/share/weChat/shareGiftReceiveRedirect?source=CX&scene=6&unionId=EkJPKAZOcnjBb1tuYWo4DGRI8eOlS0ptCF8XY9AhEO0%3D&openId=7FwNkjtXlpcksBqBigsH6DM7XYu%2FBFAckoow9rME%2F%2Fs%3D&memId=9e%2FhPjmzn1whMNtXUXe9pJkxj3i5cqb584fF8M9bDgIDdjSr%2F6X0WoiZtgGzs7sG&memNo=6tB15T6k0ZvyroDMcHJm6dOd9hSeav7xjCJZ2HjsUesDdjSr%2F6X0WoiZtgGzs7sG&mobile=xSK3QIp7iMZgoL3tj6K0FA%3D%3D&bizCode=619%40%40R0VaTmhYNnZHWHNKZTJLejlPV3hpeDhveGVTMXBzbGhXU0JtR00ySVowQT0%3D'
     ENV = os.getenv(ENV_NAME)
     token = ENV if ENV else token
 
