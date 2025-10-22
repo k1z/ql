@@ -1597,10 +1597,10 @@ class RUN:
         self.get_SignTaskList(True)
 
         # 执行丰蜜任务
-        self.honey_indexData()
+        # self.honey_indexData()
         # 获取任务列表并执行任务
-        self.get_honeyTaskListStart()
-        self.honey_indexData(True)
+        # self.get_honeyTaskListStart()
+        # self.honey_indexData(True)
 
         # #######################################
         # # # 获取当前季度结束日期
@@ -1616,6 +1616,7 @@ class RUN:
         # #     print('周年庆活动已结束')
         # #######################################
         # self.member_day_index()
+
         current_date = datetime.now().day
         if 26 <= current_date <= 28:
             self.member_day_index()
