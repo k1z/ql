@@ -179,6 +179,7 @@ class SFExpress:
         for i in range(1, 10):
             body = {"channelType": f"{i}"}
             req = self.session.post(url, headers=headers, json=body)
+            print(req.json())
             for task_msg in req.json()["obj"]["taskTitleLevels"]:
                 task_title = task_msg["title"]
                 task_status = task_msg["status"]
